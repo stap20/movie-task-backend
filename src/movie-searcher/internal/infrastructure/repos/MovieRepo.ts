@@ -2,7 +2,6 @@ import axios from "axios";
 import { IMovieRepo } from "../../domain/contracts/IMovieRepo";
 import { Movie } from "../../domain/models/Movie";
 import { MovieMapper } from "../mappers/MovieMapper";
-import { Injectable } from "@nestjs/common";
 
 export class MovieRepo implements IMovieRepo {
     private readonly apiKey = process.env.OMDB_API_KEY;
