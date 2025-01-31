@@ -13,8 +13,9 @@ export class UpdateFavoriteHandler {
             throw new Error("Favorite not found");
         }
 
-        favorite.update(command.title, command.year, command.imdbID, command.posterLink);
+        
 
+        favorite.update(command.title, command.year, command.imdbID, command.posterLink);
         await this.favoriteRepo.save(favorite);
     }
 }

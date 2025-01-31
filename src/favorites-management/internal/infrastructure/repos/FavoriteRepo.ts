@@ -17,8 +17,11 @@ export class FavoriteRepo implements IFavoriteRepo {
 
     async save(favorite: Favorite): Promise<void> {
         const favdbModel = FavoriteMapper.toPersistence(favorite);
-        await this.prisma.favorite.create({
-            data: favdbModel,
+
+        await this.prisma.favorite.upsert({
+            where: { id: favorite.Id },
+            update: favdbModel,
+            create: favdbModel,
         });
     }
 
@@ -43,13 +46,13 @@ export class FavoriteRepo implements IFavoriteRepo {
 
     async getById(id: number): Promise<Favorite> {
         const favdbModel = await this.prisma.favorite.findUnique({
-          where: { id },
+            where: { id },
         });
 
         if (!favdbModel) {
-          throw new Error(`Favorite with ID ${id} not found`);
+            throw new Error(`Favorite with ID ${id} not found`);
         }
 
         return FavoriteMapper.toDomain(favdbModel);
-      }
+    }
 }

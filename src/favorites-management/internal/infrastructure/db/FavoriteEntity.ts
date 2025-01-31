@@ -4,6 +4,7 @@ export type FavoriteEntity = {
     year: number;
     imdbID: string;
     poster_link: string;
+    favorite_note:string;
     createdAt: Date;
     updatedAt: Date;
 }

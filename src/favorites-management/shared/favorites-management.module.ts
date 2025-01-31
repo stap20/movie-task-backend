@@ -9,9 +9,10 @@ import { AddFavoriteController } from '../internal/api/controllers/AddFavoriteCo
 import { UpdateFavoriteController } from '../internal/api/controllers/UpdateFavoriteController';
 import { DeleteFavoriteController } from '../internal/api/controllers/DeleteFavoriteController';
 import { GetAllFavoritesController } from '../internal/api/controllers/GetAllFavoritesController';
+import { PrismaService } from 'src/shared/database/PrismaService';
 
 @Module({
-    providers: [AddFavoriteHandler,UpdateFavoriteHandler,DeleteFavoriteHandler,GetFavoritesHandler,{ provide: IFavoriteRepo, useClass: FavoriteRepo }],
+    providers: [PrismaService,AddFavoriteHandler,UpdateFavoriteHandler,DeleteFavoriteHandler,GetFavoritesHandler,{ provide: IFavoriteRepo, useClass: FavoriteRepo }],
     controllers: [AddFavoriteController,UpdateFavoriteController,DeleteFavoriteController,GetAllFavoritesController],
 })
 export class FavoritesManagementModule {}

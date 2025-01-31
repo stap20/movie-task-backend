@@ -11,6 +11,7 @@ export class FavoriteMapper {
             poster_link: favorite.PosterLink,
             createdAt: favorite.CreationDate,
             updatedAt: favorite.LastUpdate,
+            favorite_note:""
         };
     }
     static toDomain(favorite: FavoriteEntity): Favorite {
