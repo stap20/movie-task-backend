@@ -3,7 +3,7 @@ import { SearchMoviesHandler } from "../application/queries/SearchMoviesHandler"
 import { SearchMoviesQuery } from "../application/queries/SearchMoviesQuery";
 import { SearchMoviesResponse } from "../application/queries/SearchMoviesResponse";
 
-@Controller('movies')
+@Controller('/v1/movies')
 export class SearchMoviesController {
     constructor(private readonly searchMoviesHandler: SearchMoviesHandler) { }
 
