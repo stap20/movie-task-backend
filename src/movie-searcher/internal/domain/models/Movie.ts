@@ -12,8 +12,8 @@ export class Movie {
     }
 
     public static create(title: string, year: string, imdbID: string, posterLink: string): Movie {
-        if (!posterLink || !posterLink.startsWith('http')) {
-            throw new Error('Invalid poster link');
+        if (!posterLink || !posterLink.startsWith('http') || !posterLink.startsWith('https')) {
+            posterLink = null;
         }
 
         return new Movie(title, year, imdbID, posterLink);
