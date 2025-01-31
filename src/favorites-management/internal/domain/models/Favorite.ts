@@ -1,27 +1,29 @@
 import { IFavoriteRepo } from "../contracts/IFavoriteRepo";
 
 export class Favorite {
-    private id:number;
-    private title:string;
-    private year:number;
-    private imdbID:string;
-    private posterLink:string;
-    private creationDate:Date;
-    private lastUpdate:Date;
+    private id: number;
+    private title: string;
+    private year: number;
+    private imdbID: string;
+    private posterLink: string;
+    private creationDate: Date;
+    private lastUpdate: Date;
 
-    private constructor(id:number, title:string, year:number, imdbID:string, posterLink:string, creationDate:Date, lastUpdate:Date) {
+    private constructor(id: number, title: string, year: number, imdbID: string, posterLink: string, creationDate: Date, lastUpdate: Date) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.imdbID = imdbID;
         this.posterLink = posterLink;
+        this.creationDate = creationDate;
+        this.lastUpdate = lastUpdate
     }
 
-    public static create(id:number, title:string, year:string, imdbID:string, posterLink:string):Favorite {
-        return new Favorite(id, title, parseInt(year), imdbID, posterLink, new Date(), new Date());
+    public static create(id: number, title: string, year: string, imdbID: string, posterLink: string, creationDate: Date = new Date(), lastUpdate: Date = new Date()): Favorite {
+        return new Favorite(id, title, parseInt(year), imdbID, posterLink, creationDate, lastUpdate);
     }
 
-    public update(title:string, year:number, imdbID:string, posterLink:string):void {
+    public update(title: string, year: number, imdbID: string, posterLink: string): void {
         this.title = title;
         this.year = year;
         this.imdbID = imdbID;
@@ -29,35 +31,35 @@ export class Favorite {
         this.lastUpdate = new Date();
     }
 
-    public async delete(favoriteRepo:IFavoriteRepo):Promise<void> {
+    public async delete(favoriteRepo: IFavoriteRepo): Promise<void> {
         await favoriteRepo.delete(this.id);
-    } 
+    }
 
-    get Id():number {
+    get Id(): number {
         return this.id;
     }
 
-    get Title():string {
+    get Title(): string {
         return this.title;
     }
 
-    get Year():number {
+    get Year(): number {
         return this.year;
     }
 
-    get ImdbID():string {
+    get ImdbID(): string {
         return this.imdbID;
     }
 
-    get PosterLink():string {
+    get PosterLink(): string {
         return this.posterLink;
     }
 
-    get CreationDate():Date {
+    get CreationDate(): Date {
         return this.creationDate;
-    }   
+    }
 
-    get LastUpdate():Date {
+    get LastUpdate(): Date {
         return this.lastUpdate;
     }
 
