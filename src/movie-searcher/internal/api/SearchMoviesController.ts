@@ -8,7 +8,7 @@ export class SearchMoviesController {
     constructor(private readonly searchMoviesHandler: SearchMoviesHandler) { }
 
     @Get()
-    async searchMovies(@Query('searchTerm') query: string, @Query('page') page: string): Promise<SearchMoviesResponse> {
+    async searchMovies(@Query('searchTerm') query: string, @Query('page') page: string = "1"): Promise<SearchMoviesResponse> {
         const searchMoviesQuery: SearchMoviesQuery = { searchTerm: query, page: parseInt(page) };
         const movies = await this.searchMoviesHandler.handle(searchMoviesQuery);
 
